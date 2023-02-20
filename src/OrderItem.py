@@ -23,3 +23,16 @@ class OrderItem(object) :
     
     def  toString(self) :
         return "id=" + str(self.id) + ", amount=" + str(self.amount) + ", value=" + str(self.value) + ", discount=" + str(self.discount) + ", finalValue=" + str(self.getFinalValue())
+
+    def isValid(self):
+        
+        if self.amount < 0.0: 
+            return False
+        
+        if self.value < 0.0: 
+            return False
+        
+        if self.discount < 0.0 or self.discount > 1.0:
+            return False
+        
+        return True

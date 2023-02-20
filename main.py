@@ -14,7 +14,8 @@ class Main(object):
             print("1 - Add Order Item")
             print("2 - List Orders")
             print("3 - Remove Order Item")
-            print("4 - Exit")
+            print("4 - Find Errors")
+            print("5 - Exit")
             
             option = ConsoleUtils.askInteger("Option: ")
             
@@ -25,6 +26,8 @@ class Main(object):
             elif option==3:
                 self.removeOrderItemById()
             elif option==4:
+                self.findErrors()
+            elif option==5:
                 quit(1)
             else:
                 print("Invalid Option. Try it again!")
@@ -67,6 +70,18 @@ class Main(object):
         Database.getInstance().removeById(id)
         
         ConsoleUtils.askString("Done. Press enter to continue")
+    
+    def findErrors(self):
         
-
+        ConsoleUtils.cls()
+        
+        print("Is order item valid?")
+        
+        items = Database.getInstance().getAll()
+        
+        for item in items:
+            print("id="+str(item.id) +" => " + str(item.isValid()))
+            
+        ConsoleUtils.askString("Done. Press enter to continue")
+            
 Main().main()
