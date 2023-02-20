@@ -1,3 +1,4 @@
+import os
 
 class ConsoleUtils:
 
@@ -28,3 +29,8 @@ class ConsoleUtils:
         text = ConsoleUtils.askString(field)
 
         return float(text)
+
+    @staticmethod
+    def cls():
+        # clear the screen
+        os.system('cls' if os.name=='nt' else 'clear')

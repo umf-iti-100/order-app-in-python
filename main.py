@@ -8,6 +8,8 @@ class Main(object):
     
         while True:
             
+            ConsoleUtils.cls()
+            
             print("Menu:")
             print("1 - Add Order Item")
             print("2 - List Orders")
@@ -29,25 +31,42 @@ class Main(object):
 
     def addOrderItem(cls):
     
+        ConsoleUtils.cls()
+    
         print("Add Order Item")
+        
         amount = ConsoleUtils.askInteger("Amount: ")
         value = ConsoleUtils.askFloat("Value: ")
         discount = ConsoleUtils.askFloat("Discount: ")
+        
         oi = OrderItem(amount, value, discount)
+        
         Database.getInstance().save(oi)
+        
+        ConsoleUtils.askString("Done. Press enter to continue")
 
     def listOrders(cls):
         
+        ConsoleUtils.cls()
+        
         print("List Order Items:")
+        
         items = Database.getInstance().getAll()
         for oi in items:
             print(oi.toString())
+        
+        ConsoleUtils.askString("Done. Press enter to continue")
 
     def removeOrderItemById(cls):
         
+        ConsoleUtils.cls()
+        
         print("Remove Order Item by Id:")
+        
         id = ConsoleUtils.askInteger("Id: ")
         Database.getInstance().removeById(id)
+        
+        ConsoleUtils.askString("Done. Press enter to continue")
         
 
 Main().main()
