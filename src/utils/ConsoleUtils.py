@@ -32,5 +32,9 @@ class ConsoleUtils:
 
     @staticmethod
     def cls():
+        """! This method clears the screen. It takes 
+        into account the operating system that this app
+        is running
+        """
         # clear the screen
         os.system('cls' if os.name=='nt' else 'clear')
